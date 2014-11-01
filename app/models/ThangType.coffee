@@ -328,14 +328,25 @@ module.exports = class ThangType extends CocoModel
     props: props, stats: stats
 
   formatStatDisplay: (name, modifiers) ->
-    name = {maxHealth: 'Health', maxSpeed: 'Speed', healthReplenishRate: 'Regeneration'}[name] ? name
+    name = {
+      maxHealth: 'Health'
+      maxSpeed: 'Speed'
+      healthReplenishRate: 'Regeneration'
+      attackDamage: 'Damage'
+      attackRange: 'Range'
+      shieldDefenseFactor: 'Blocks'
+      visualRange: 'Vision'
+    }[name] ? name
     name = _.string.humanize name
     format = ''
-    format = 'm' if /(range|radius|distance)$/i.test name
+    format = 'm' if /(range|radius|distance|vision)$/i.test name
     format ||= 's' if /cooldown$/i.test name
     format ||= 'm/s' if /speed$/i.test name
     format ||= '/s' if /(regeneration| rate)$/i.test name
     value = modifiers.setTo
+    if /(blocks)$/i.test name
+      format ||= '%'
+      value = (value*100).toFixed(1)
     value = value.join ', ' if _.isArray value
     display = []
     display.push "#{value}#{format}" if value?

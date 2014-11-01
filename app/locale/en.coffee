@@ -104,11 +104,12 @@
     recovery_sent: "Recovery email sent."
 
   items:
+    primary: "Primary"
+    secondary: "Secondary"
     armor: "Armor"
-    hands: "Hands"
     accessories: "Accessories"
-    minions: "Minions"
     misc: "Misc"
+    books: "Books"
 
   common:
     loading: "Loading..."

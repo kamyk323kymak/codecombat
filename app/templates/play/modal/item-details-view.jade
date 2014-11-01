@@ -1,0 +1,29 @@
+
+#item-title
+  h2.big-font= item ? item.get('name') : ''
+
+#item-details-body
+  if item
+    #item-container
+      img.item-img(src=item.getPortraitURL())
+      img.item-shadow(src=item.getPortraitURL())
+    
+    hr
+  
+    for stat in stats
+      div.stat-row.big-font
+        div.stat-label= stat.name
+        div.stat= stat.display
+      hr
+
+    if props.length
+      #skills
+        h3.big-font Skills Granted
+        for prop in props
+          p
+            strong.big-font= prop.name
+            span.spr :
+            span= prop.description
+
+if item
+  button#selected-item-unlock-button.btn.big-font.unlock-button Unlock

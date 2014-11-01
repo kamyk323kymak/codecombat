@@ -1,17 +1,36 @@
-extends /templates/modal/modal_base
-
-block modal-header-content
-  h3(data-i18n="play.items") Items
-
-block modal-body-content
-  ul.nav.nav-tabs
-    for slotGroup, index in slotGroupsArray
-      li(class=index ? "" : "active")
-        a(href="#slot-group-" + slotGroup, data-toggle="tab")
-          span= slotGroupsNames[index]
-  .tab-content
-    for slotGroup, index in slotGroupsArray
-      .tab-pane(id="slot-group-" + slotGroup, class=index ? "" : "active")
-        h3 buy some #{slotGroupsNames[index]} yo:
-        for item in slotGroups[slotGroup]
-          .replace-me(data-item-id=item.id)
+.modal-dialog
+  .modal-content
+    
+    h1.big-font(data-i18n="play.items")
+    
+    div#gems-count-container
+      img(src="/images/common/gem.png")
+      span#gems-count.big-font= gems
+    
+    div#close-modal
+      span.glyphicon.glyphicon-remove
+    
+    ul.nav.nav-pills.nav-stacked
+      for category, index in itemCategories
+        li(class=index ? "" : "active")
+          a(href="#item-category-" + category, data-toggle="tab")
+            span.big-font= itemCategoryNames[index]
+    
+    
+    .tab-content
+      for category, index in itemCategories
+        .tab-pane(id="item-category-" + category, class=index ? "" : "active")
+          .nano
+            .nano-content
+              for item in itemCategoryCollections[category].models
+                .item(data-item-id=item.id)
+                  strong.big-font= item.get('name')
+                  img.item-img(src=item.getPortraitURL())
+                  img.item-shadow(src=item.getPortraitURL())
+                  span.cost
+                    img(src="/images/common/gem.png")
+                    span.big-font= item.get('gems')
+                  button.btn.unlock-button.big-font Unlock
+              .clearfix
+              
+    #item-details-view
