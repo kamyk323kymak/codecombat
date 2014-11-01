@@ -17,6 +17,7 @@ REAL_TIME_BUFFER_MAX = 3 * PROGRESS_UPDATE_INTERVAL
 REAL_TIME_BUFFERED_WAIT_INTERVAL = 0.5 * PROGRESS_UPDATE_INTERVAL
 REAL_TIME_COUNTDOWN_DELAY = 3000  # match CountdownScreen
 ITEM_ORIGINAL = '53e12043b82921000051cdf9'
+COUNTDOWN_LEVELS = ['sky-span', 'dueling-grounds', 'cavern-survival']  # TODO: determine flag usage dynamically
 
 module.exports = class World
   @className: 'World'
@@ -98,13 +99,16 @@ module.exports = class World
     continueLaterFn = =>
       @loadFrames(loadedCallback, errorCallback, loadProgressCallback, preloadedCallback, skipDeferredLoading, loadUntilFrame) unless @destroyed
     if @realTime and not @countdownFinished
-      if @levelID in ['the-first-kithmaze', 'the-second-kithmaze', 'the-final-kithmaze']
+      if @levelID in ['the-first-kithmaze', 'the-second-kithmaze', 'the-final-kithmaze', 'the-gauntlet', 'winding-trail', 'thornbush-farm']
         @realTimeSpeedFactor = 5
-      else if @levelID in ['kithgard-gates']
+      else if @levelID in ['forgotten-gemsmith', 'descending-further', 'tactical-strike', 'kithgard-gates']
         @realTimeSpeedFactor = 3
       else
         @realTimeSpeedFactor = 1
-      return setTimeout @finishCountdown(continueLaterFn), REAL_TIME_COUNTDOWN_DELAY
+      if @showsCountdown
+        return setTimeout @finishCountdown(continueLaterFn), REAL_TIME_COUNTDOWN_DELAY
+      else
+        @finishCountdown continueLaterFn
     t1 = now()
     @t0 ?= t1
     @worldLoadStartTime ?= t1
@@ -199,6 +203,7 @@ module.exports = class World
 
   loadFromLevel: (level, willSimulate=true) ->
     @levelID = level.slug
+    @showsCountdown = @levelID in COUNTDOWN_LEVELS
     @levelComponents = level.levelComponents
     @thangTypes = level.thangTypes
     @loadScriptsFromLevel level
