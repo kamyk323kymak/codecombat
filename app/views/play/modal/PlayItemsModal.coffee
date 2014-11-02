@@ -8,6 +8,8 @@ CocoCollection = require 'collections/CocoCollection'
 ThangType = require 'models/ThangType'
 LevelComponent = require 'models/LevelComponent'
 
+utils = require 'lib/utils'
+
 PAGE_SIZE = 200
 
 slotToCategory = {
@@ -58,6 +60,7 @@ module.exports = class PlayItemsModal extends ModalView
       'original'
       'rasterIcon'
       'gems'
+      'i18n'
     ]
     
     itemFetcher = new CocoCollection([], { url: '/db/thang.type?view=items', project: project, model: ThangType })
@@ -76,6 +79,7 @@ module.exports = class PlayItemsModal extends ModalView
       collection = @itemCategoryCollections[category]
       collection.comparator = 'gems'
       collection.add(model)
+      model.name = utils.i18n model.attributes, 'name'
       @idToItem[model.id] = model
 
     if needMore
@@ -164,9 +168,20 @@ class ItemDetailsView extends CocoView
       stats = @item.getFrontFacingStats()
       c.stats = _.values(stats.stats)
       c.props = []
+      progLang = (me.get('aceConfig') ? {}).language or 'python'
       for prop in stats.props
+        description = utils.i18n @propDocs[prop] ? {}, 'description'
+        
+        if _.isObject description
+          description = description[progLang] or _.values(description)[0]
+        if _.isString description
+          description = description.replace(/#{spriteName}/g, 'hero')
+          if fact = stats.stats.shieldDefenseFactor
+            description = description.replace(/#{shieldDefensePercent}%/g, fact.display)
+          description = $(marked(description)).html()
+          
         c.props.push {
           name: prop
-          description: @propDocs[prop]?.description or '...'
+          description: description or '...'
         }
     c

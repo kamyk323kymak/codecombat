@@ -1,6 +1,6 @@
 
 #item-title
-  h2.big-font= item ? item.get('name') : ''
+  h2.big-font= item ? item.name : ''
 
 #item-details-body
   if item
@@ -18,12 +18,12 @@
 
     if props.length
       #skills
-        h3.big-font Skills Granted
+        h3.big-font(data-i18n="play.skills-granted")
         for prop in props
           p
             strong.big-font= prop.name
             span.spr :
-            span= prop.description
+            span!= prop.description
 
 if item
   button#selected-item-unlock-button.btn.big-font.unlock-button Unlock

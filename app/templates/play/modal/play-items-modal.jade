@@ -24,13 +24,13 @@
             .nano-content
               for item in itemCategoryCollections[category].models
                 .item(data-item-id=item.id)
-                  strong.big-font= item.get('name')
+                  strong.big-font= item.name
                   img.item-img(src=item.getPortraitURL())
                   img.item-shadow(src=item.getPortraitURL())
                   span.cost
                     img(src="/images/common/gem.png")
                     span.big-font= item.get('gems')
-                  button.btn.unlock-button.big-font Unlock
+                  button.btn.unlock-button.big-font(data-i18n="play.unlock")
               .clearfix
               
     #item-details-view
