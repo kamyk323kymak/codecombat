@@ -98,7 +98,7 @@ module.exports = class PlayItemsModal extends ModalView
     super()
     return unless @supermodel.finished()
     Backbone.Mediator.publish 'audio-player:play-sound', trigger: 'game-menu-open', volume: 1
-    @$el.find('.modal-dialog').css({width: "1230px", height: "660px", background: 'white'})
+    @$el.find('.modal-dialog').css({width: "1230px", height: "660px", background: 'none'})
     @$el.find('.background-wrapper').css({'background', 'none'})
     @$el.find('.nano:visible').nanoScroller({alwaysVisible: true})
     @itemDetailsView = new ItemDetailsView()
@@ -167,6 +167,7 @@ class ItemDetailsView extends CocoView
     if @item
       stats = @item.getFrontFacingStats()
       c.stats = _.values(stats.stats)
+      _.last(c.stats).isLast = true if c.stats.length
       c.props = []
       progLang = (me.get('aceConfig') ? {}).language or 'python'
       for prop in stats.props

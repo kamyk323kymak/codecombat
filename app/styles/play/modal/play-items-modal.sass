@@ -6,10 +6,22 @@
     text-transform: uppercase
     font-family: Open Sans Condensed
     font-weight: bold
-  
+    
+  .one-line
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
   //- Clear modal defaults
   .modal-dialog
     padding: 0
+    
+  
+  //- Background
+  #play-items-modal-bg
+    position: absolute
+    top: -69px
+    left: -8px
     
     
   //- Header
@@ -32,20 +44,11 @@
     top: 10px
     width: 160px
     height: 66px
-    background-color: rgb(205,188,160)
-    border: 4px solid rgb(31,20,17)
     
-    img
-      width: 32px
-      height: 32px
-      position: absolute
-      top: 13px
-      left: 30px
-      
     #gems-count
       position: absolute
-      left: 70px
-      top: 11px
+      left: 75px
+      top: 17px
       font-size: 25px
       color: rgb(1,64,91)
    
@@ -54,12 +57,10 @@
   
   #close-modal
     position: absolute
-    left: 600px
-    top: 10px
+    left: 602px
+    top: 23px
     width: 60px
     height: 60px
-    border: 5px solid black
-    background: rgb(187,26,21)
     color: white
     text-align: center
     font-size: 30px 
@@ -70,29 +71,32 @@
   .nav
     position: absolute
     top: 125px
-    left: -20px
-    width: 200px
+    left: -31px
+    width: 178px
     
     li
-      background: rgb(24,15,12)
+      background: url(/images/pages/play/modal/play-items-modal-tab.png)
       padding: 5px
-      border-radius: 10px
       margin: -5px 0
+      height: 80px
+      padding: 0
         
       a
         font-size: 18px
-        height: 75px
         line-height: 50px
-        background: rgb(58,48,40)
-        border: 2px solid rgb(80,71,65)
+        background: none
         color: rgb(195,153,124)
         font-weight: bold
+        padding: 10px 7px
+        
+      //img
+        
       
     li.active
+      background: url(/images/pages/play/modal/play-items-modal-selected-tab.png)
+      width: 197px
       
       a
-        background: rgb(34,27,22)
-        border: 2px solid rgb(64,57,52)
         color: white
     
     
@@ -100,13 +104,11 @@
 
   .tab-content
     position: absolute
-    top: 115px
-    left: 150px
+    top: 116px
+    left: 148px
     width: 669px
-    height: 540px
+    height: 507px
     overflow: hidden
-    background: rgb(210,203,178)
-    border: 4px solid rgb(26,19,14)
     
   .tab-pane
     height: 100%
@@ -119,12 +121,11 @@
     
   .item
     cursor: pointer
-    width: 186px
+    width: 187px
     padding: 10px
-    height: 193px
+    height: 195px
     float: left
-    background-color: rgb(211,199,176)
-    border: 3px solid rgb(177,165,140)
+    background: url(/images/pages/play/modal/play-items-modal-item-background.png)
     margin: 4px
     text-align: center
     position: relative
@@ -149,8 +150,8 @@
         top: 55px
       
     .unlock-button
-      right: -2px
-      bottom: -3px
+      right: 1px
+      bottom: 0
       width: 93px
       height: 41px
       font-size: 16px
@@ -158,10 +159,8 @@
     .cost
       position: absolute
       height: 41px
-      background-color: rgb(196,188,163)
-      border: 2px solid rgb(181,167,138)
-      left: -3px
-      bottom: -3px
+      left: 0
+      bottom: 0
       width: 95px
       line-height: 36px
       font-size: 16px
@@ -175,29 +174,8 @@
         position: relative
         top: -2px
 
-      
-    //- Selected item
-      
     &.selected
-      border: 3px solid rgb(18,29,33)
       background: rgb(239,227,204)
-
-      .cost
-        border-left: none
-        border-bottom: none
-        left: 0
-        bottom: 0
-        width: 91px
-        height: 38px
-        background: rgb(239,227,204)
-      
-      .unlock-button
-        border-right: none
-        border-bottom: none
-        right: 0
-        bottom: 0
-        width: 90px
-        height: 38px
 
     
   //- Item list scrollbar
@@ -221,18 +199,13 @@
 
   #item-title
     position: absolute
-    width: 226px
+    width: 228px
     height: 50px
-    background: rgb(209,197,172)
-    left: 920px
-    top: 45px
+    left: 910px
+    top: 60px
     z-index: 2
-    border: 4px solid rgb(26,24,13)
     
     h2
-      white-space: nowrap
-      overflow: hidden
-      text-overflow: ellipsis
       font-size: 20px
       margin: 12px 20px
       text-align: center
@@ -240,19 +213,18 @@
 
   #item-details-body
     position: absolute
-    left: 864px
-    top: 123px
-    width: 336px
-    height: 454px
-    background: rgb(241,229,203)
-    border: 5px solid rgb(29,21,18)
+    left: 860px
+    top: 126px
+    width: 330px
+    height: 453px
+    //background: rgba(100,100,100,0.5)
     overflow: scroll
 
     #item-container
       height: 163px
       width: 100%
 
-    img
+    .item-img, .item-shadow
       width: 130px
       height: 130px
 
@@ -262,13 +234,15 @@
     .item-shadow
       top: 25px
 
-    hr
-      border-color: black
+    img.hr
       width: 80%
-      margin: 0 10%
+      margin: 0 10% -3px
+      
+      &.faded
+        opacity: 0.4
       
     .stat-row
-      height: 44px
+      height: 24px
       position: relative
       font-size: 20px
       font-weight: bold
@@ -276,13 +250,11 @@
       .stat-label
         position: absolute
         left: 54px
-        top: 8px
         color: rgb(93,73,52)
         
       .stat
         position: absolute
         left: 150px
-        top: 8px
         color: rgb(42,38,28)
       
     #skills
@@ -295,9 +267,9 @@
         color: rgb(50,50,30)
       
   #selected-item-unlock-button
-    left: 864px
-    top: 587px
-    width: 336px
+    left: 856px
+    top: 594px
+    width: 337px
     height: 41px
     font-size: 16px
 
@@ -333,3 +305,6 @@
     color: white
     font-size: 16px
     border-radius: 0
+    
+    &:disabled
+      background: rgb(0,60,84)

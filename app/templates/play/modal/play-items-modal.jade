@@ -1,10 +1,10 @@
 .modal-dialog
   .modal-content
+    img(src="/images/pages/play/modal/play-items-modal-background.png")#play-items-modal-bg
     
     h1.big-font(data-i18n="play.items")
     
     div#gems-count-container
-      img(src="/images/common/gem.png")
       span#gems-count.big-font= gems
     
     div#close-modal
@@ -13,7 +13,8 @@
     ul.nav.nav-pills.nav-stacked
       for category, index in itemCategories
         li(class=index ? "" : "active")
-          a(href="#item-category-" + category, data-toggle="tab")
+          a.one-line(href="#item-category-" + category, data-toggle="tab")
+            img.tab-icon(src="/images/pages/play/modal/play-items-modal-tab-icon-"+category+".png")
             span.big-font= itemCategoryNames[index]
     
     
