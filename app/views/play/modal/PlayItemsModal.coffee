@@ -71,15 +71,19 @@ module.exports = class PlayItemsModal extends ModalView
     @idToItem = {}
 
   onItemsFetched: (itemFetcher) ->
+    gemsOwned = me.get('earned')?.gems or 0
     needMore = itemFetcher.models.length is PAGE_SIZE
+    itemsOwned = me.get('earned').items or []
     for model in itemFetcher.models
-      continue unless model.get('gems')
+      continue unless cost = model.get('gems')
       category = slotToCategory[model.getAllowedSlots()[0]] or 'misc'
       @itemCategoryCollections[category] ?= new Backbone.Collection()
       collection = @itemCategoryCollections[category]
       collection.comparator = 'gems'
       collection.add(model)
       model.name = utils.i18n model.attributes, 'name'
+      model.affordable = cost <= gemsOwned
+      model.owned = model.get('original') in itemsOwned
       @idToItem[model.id] = model
 
     if needMore

@@ -52,6 +52,7 @@
     hours_played: "hours played"  # Hover over a level on /play
     items: "Items"  # Tooltip on item shop button from /play
     unlock: "Unlock" # For purchasing items and heroes
+    owned: "Owned" # For items you own
     skills_granted: "Skills Granted" # Property documentation details
     heroes: "Heroes"  # Tooltip on hero shop button from /play
     achievements: "Achievements"  # Tooltip on achievement list button from /play

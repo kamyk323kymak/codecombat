@@ -28,10 +28,13 @@
                   strong.big-font= item.name
                   img.item-img(src=item.getPortraitURL())
                   img.item-shadow(src=item.getPortraitURL())
-                  span.cost
-                    img(src="/images/common/gem.png")
-                    span.big-font= item.get('gems')
-                  button.btn.unlock-button.big-font(data-i18n="play.unlock")
+                  if item.owned
+                    span.big-font.owned(data-i18n="play.owned")
+                  else
+                    span.cost
+                      img(src="/images/common/gem.png")
+                      span.big-font= item.get('gems')
+                    button.btn.unlock-button.big-font(data-i18n="play.unlock", disabled=!item.affordable)
               .clearfix
               
     #item-details-view

@@ -25,5 +25,5 @@
             span.spr :
             span!= prop.description
 
-if item
-  button#selected-item-unlock-button.btn.big-font.unlock-button Unlock
+if item && !item.owned
+  button#selected-item-unlock-button.btn.big-font.unlock-button(disabled=!item.affordable) Unlock
