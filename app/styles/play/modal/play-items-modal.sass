@@ -148,6 +148,25 @@
         top: 45px
       &.item-shadow
         top: 55px
+      &.item-silhouette
+        top: 25px
+        width: 110px
+        height: 110px
+        
+    .glyphicon-lock
+      font-size: 60px
+      position: absolute
+      top: 50px
+      color: rgb(149,141,123)
+      z-index: 1
+      left: 0
+      right: 0
+      margin-left: auto
+      margin-right: auto
+      
+      &.bolder
+        font-weight: bolder
+        color: rgb(211,200,175)
       
     .unlock-button
       right: 1px
@@ -174,7 +193,7 @@
         position: relative
         top: -2px
         
-    .owned
+    .owned, .locked
       position: absolute
       left: 0
       right: 0
@@ -286,24 +305,25 @@
 
   //- Item icons w/shadows (both in list and details areas)
 
-  img.item-img
+  .item-img, .item-shadow, .item-silhouette
     position: absolute
     margin-left: auto
     margin-right: auto
     left: 0
     right: 0
     bottom: 0
+
+  .item-img
     z-index: 1
 
   .item-shadow
-    position: absolute
-    margin-left: auto
-    margin-right: auto
     left: 5px
-    right: 0
-    bottom: 0
     @include filter(contrast(0%) brightness(0%))
     opacity: 0.2
+    
+  .item-silhouette
+    @include filter(contrast(0%) brightness(0%))
+    opacity: 0.3
     
     
   //- Unlock buttons (both in list and details areas)

@@ -53,6 +53,7 @@
     items: "Items"  # Tooltip on item shop button from /play
     unlock: "Unlock" # For purchasing items and heroes
     owned: "Owned" # For items you own
+    locked: "Locked"
     skills_granted: "Skills Granted" # Property documentation details
     heroes: "Heroes"  # Tooltip on hero shop button from /play
     achievements: "Achievements"  # Tooltip on achievement list button from /play

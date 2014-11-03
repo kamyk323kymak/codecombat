@@ -84,6 +84,7 @@ module.exports = class PlayItemsModal extends ModalView
       model.name = utils.i18n model.attributes, 'name'
       model.affordable = cost <= gemsOwned
       model.owned = model.get('original') in itemsOwned
+      model.silhouetted = model.isSilhouettedItem()
       @idToItem[model.id] = model
 
     if needMore
@@ -119,8 +120,11 @@ module.exports = class PlayItemsModal extends ModalView
     if wasSelected
       item = null
     else
-      itemEl.addClass('selected') unless wasSelected
       item = @idToItem[itemEl.data('item-id')]
+      if item.silhouetted
+        item = null
+      else
+        itemEl.addClass('selected') unless wasSelected
     @itemDetailsView.setItem(item)
     
   onTabClicked: (e) ->

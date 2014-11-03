@@ -25,11 +25,19 @@
             .nano-content
               for item in itemCategoryCollections[category].models
                 .item(data-item-id=item.id)
-                  strong.big-font= item.name
-                  img.item-img(src=item.getPortraitURL())
-                  img.item-shadow(src=item.getPortraitURL())
+                  if item.silhouetted && !item.owned
+                    span.glyphicon.glyphicon-lock.bolder
+                    span.glyphicon.glyphicon-lock
+                    img.item-silhouette(src=item.getPortraitURL())
+                  else
+                    strong.big-font= item.name
+                    img.item-img(src=item.getPortraitURL())
+                    img.item-shadow(src=item.getPortraitURL())
+                  
                   if item.owned
                     span.big-font.owned(data-i18n="play.owned")
+                  else if item.silhouetted
+                    span.big-font.locked(data-i18n="play.locked")
                   else
                     span.cost
                       img(src="/images/common/gem.png")
