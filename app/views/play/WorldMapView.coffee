@@ -7,6 +7,7 @@ PlayLevelModal = require 'views/play/modal/PlayLevelModal'
 ThangType = require 'models/ThangType'
 MusicPlayer = require 'lib/surface/MusicPlayer'
 storage = require 'lib/storage'
+AuthModal = require 'views/modal/AuthModal'
 
 class LevelSessionsCollection extends CocoCollection
   url: ''
@@ -104,7 +105,16 @@ module.exports = class WorldMapView extends RootView
       @$el.find('.level').tooltip()
     @$el.addClass _.string.slugify @terrain
     @updateVolume()
-    @highlightElement '.level.next', delay: 2000, duration: 60000, rotation: 0, sides: ['top'] unless window.currentModal
+    @highlightElement '.level.next', delay: 500, duration: 60000, rotation: 0, sides: ['top'] unless window.currentModal
+
+  afterInsert: ->
+    super()
+    return unless @getQueryVariable 'signup'
+    return if me.get('email')
+    @endHighlight()
+    authModal = new AuthModal supermodel: @supermodel
+    authModal.mode = 'signup'
+    @openModalView authModal
 
   onSessionsLoaded: (e) ->
     for session in @sessions.models
