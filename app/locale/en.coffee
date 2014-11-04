@@ -52,6 +52,7 @@
     hours_played: "hours played"  # Hover over a level on /play
     items: "Items"  # Tooltip on item shop button from /play
     unlock: "Unlock" # For purchasing items and heroes
+    confirm: "Confirm"
     owned: "Owned" # For items you own
     locked: "Locked"
     skills_granted: "Skills Granted" # Property documentation details

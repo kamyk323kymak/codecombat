@@ -42,7 +42,7 @@
                     span.cost
                       img(src="/images/common/gem.png")
                       span.big-font= item.get('gems')
-                    button.btn.unlock-button.big-font(data-i18n="play.unlock", disabled=!item.affordable)
+                    button.btn.unlock-button.big-font(data-i18n="play.unlock", disabled=!item.affordable, data-item-id=item.id)
               .clearfix
               
     #item-details-view

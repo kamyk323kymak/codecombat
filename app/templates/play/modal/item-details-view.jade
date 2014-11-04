@@ -26,4 +26,4 @@
             span!= prop.description
 
 if item && !item.owned
-  button#selected-item-unlock-button.btn.big-font.unlock-button(disabled=!item.affordable) Unlock
+  button#selected-item-unlock-button.btn.big-font.unlock-button(disabled=!item.affordable, data-item-id=item.id, data-i18n="play.unlock") Unlock

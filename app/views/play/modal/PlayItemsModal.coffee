@@ -7,6 +7,7 @@ itemDetailsTemplate = require 'templates/play/modal/item-details-view'
 CocoCollection = require 'collections/CocoCollection'
 ThangType = require 'models/ThangType'
 LevelComponent = require 'models/LevelComponent'
+Purchase = require 'models/Purchase'
 
 utils = require 'lib/utils'
 
@@ -46,9 +47,12 @@ module.exports = class PlayItemsModal extends ModalView
   events:
     'click .item': 'onItemClicked'
     'shown.bs.tab': 'onTabClicked'
+    'click .unlock-button': 'onUnlockButtonClicked'
+    'click #close-modal': 'hide'
 
   constructor: (options) ->
     super options
+    me.set('spent', 0)
     @items = new Backbone.Collection()
     @itemCategoryCollections = {}
     
@@ -71,9 +75,8 @@ module.exports = class PlayItemsModal extends ModalView
     @idToItem = {}
 
   onItemsFetched: (itemFetcher) ->
-    gemsOwned = me.get('earned')?.gems or 0
+    gemsOwned = me.gems()
     needMore = itemFetcher.models.length is PAGE_SIZE
-    itemsOwned = me.get('earned').items or []
     for model in itemFetcher.models
       continue unless cost = model.get('gems')
       category = slotToCategory[model.getAllowedSlots()[0]] or 'misc'
@@ -83,7 +86,7 @@ module.exports = class PlayItemsModal extends ModalView
       collection.add(model)
       model.name = utils.i18n model.attributes, 'name'
       model.affordable = cost <= gemsOwned
-      model.owned = model.get('original') in itemsOwned
+      model.owned = me.ownsItem model.get('original')
       model.silhouetted = model.isSilhouettedItem()
       @idToItem[model.id] = model
 
@@ -96,7 +99,7 @@ module.exports = class PlayItemsModal extends ModalView
     context.itemCategoryCollections = @itemCategoryCollections
     context.itemCategories = _.keys @itemCategoryCollections
     context.itemCategoryNames = ($.i18n.t "items.#{category}" for category in context.itemCategories)
-    context.gems = me.get('earned')?.gems or 0
+    context.gems = me.gems()
     context
 
   afterRender: ->
@@ -113,7 +116,11 @@ module.exports = class PlayItemsModal extends ModalView
     super()
     Backbone.Mediator.publish 'audio-player:play-sound', trigger: 'game-menu-close', volume: 1
 
+    
+  #- Click events
+    
   onItemClicked: (e) ->
+    return if $(e.target).closest('.unlock-button').length
     itemEl = $(e.target).closest('.item')
     wasSelected = itemEl.hasClass('selected')
     @$el.find('.item.selected').removeClass('selected')
@@ -130,6 +137,28 @@ module.exports = class PlayItemsModal extends ModalView
   onTabClicked: (e) ->
     $($(e.target).attr('href')).find('.nano').nanoScroller({alwaysVisible: true})
 
+  onUnlockButtonClicked: (e) ->
+    button = $(e.target)
+    if button.hasClass('confirm')
+      item = @idToItem[$(e.target).data('item-id')]
+      purchase = Purchase.makeFor(item)
+      purchase.save()
+      
+      #- set local changes to mimic what should happen on the server...
+      purchased = me.get('purchased') ? {}
+      purchased.items ?= []
+      purchased.items.push(item.get('original'))
+      item.owned = true
+      me.set('purchased', purchased)
+      me.set('spent', (me.get('spent') ? 0) + item.get('gems'))
+      
+      #- ...then rerender key bits
+      @renderSelectors(".item[data-item-id='#{item.id}']", "#gems-count")
+      @itemDetailsView.render()
+    else
+      button.addClass('confirm').text($.i18n.t('play.confirm'))
+      @$el.one 'click', (e) ->
+        button.removeClass('confirm').text($.i18n.t('play.unlock')) if e.target isnt button[0]
     
 class ItemDetailsView extends CocoView
   id: "item-details-view"
