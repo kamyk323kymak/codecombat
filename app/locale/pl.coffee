@@ -8,7 +8,7 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     old_browser_suffix: "Możesz spróbowac mimo tego, ale prawdopodobnie gra nie będzie działać."
     campaign: "Kampania"
     for_beginners: "Dla początkujących"
-#    multiplayer: "Multiplayer" # Not currently shown on home page
+    multiplayer: "Tryb wieloosobowy" # Not currently shown on home page
     for_developers: "Dla developerów" # Not currently shown on home page.
 
   nav:
@@ -28,7 +28,7 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     about: "O nas"
     contact: "Kontakt"
     twitter_follow: "Subskrybuj"
-#    teachers: "Teachers"
+    teachers: "Dla nauczycieli"
 
   modal:
     close: "Zamknij"
@@ -50,44 +50,44 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     spectate: "Oglądaj" # Ladder page
     players: "graczy" # Hover over a level on /play
     hours_played: "rozegranych godzin" # Hover over a level on /play
-#    items: "Items" # Tooltip on item shop button from /play
-#    unlock: "Unlock" # For purchasing items and heroes
-#    confirm: "Confirm"
-#    owned: "Owned" # For items you own
-#    locked: "Locked"
-#    available: "Available"
-#    skills_granted: "Skills Granted" # Property documentation details
-#    heroes: "Heroes" # Tooltip on hero shop button from /play
-#    achievements: "Achievements" # Tooltip on achievement list button from /play
-#    account: "Account" # Tooltip on account button from /play
-#    settings: "Settings" # Tooltip on settings button from /play
-#    next: "Next" # Go from choose hero to choose inventory before playing a level
-#    change_hero: "Change Hero" # Go back from choose inventory to choose hero
-#    choose_inventory: "Equip Items"
-#    buy_gems: "Buy Gems"
-#    older_campaigns: "Older Campaigns"
-#    anonymous: "Anonymous Player"
+    items: "Przedmioty" # Tooltip on item shop button from /play
+    unlock: "Odblokuj" # For purchasing items and heroes
+    confirm: "Potwierdź"
+    owned: "Posiadane" # For items you own
+    locked: "Zablokowane"
+    available: "Dostępne"
+    skills_granted: "Posiadane umiejętności" # Property documentation details
+    heroes: "Bohaterowie" # Tooltip on hero shop button from /play
+    achievements: "Osiągnięcia" # Tooltip on achievement list button from /play
+    account: "Konto" # Tooltip on account button from /play
+    settings: "Ustawienia" # Tooltip on settings button from /play
+    next: "Dalej" # Go from choose hero to choose inventory before playing a level
+    change_hero: "Zmień bohatera" # Go back from choose inventory to choose hero
+    choose_inventory: "Wybierz przedmioty"
+    buy_gems: "Kup kryształy"
+    older_campaigns: "Starsze kampanie"
+    anonymous: "Gracz anonimowy"
     level_difficulty: "Poziom trudności: "
     campaign_beginner: "Kampania dla początkujących"
-#    awaiting_levels_adventurer_prefix: "We release five levels per week."
-#    awaiting_levels_adventurer: "Sign up as an Adventurer"
-#    awaiting_levels_adventurer_suffix: "to be the first to play new levels."
+    awaiting_levels_adventurer_prefix: "Wypuszczamy 5 poziomów co tydzień"
+    awaiting_levels_adventurer: "Zaloguj się jako poszukiwacz przygód"
+    awaiting_levels_adventurer_suffix: "by być pierwszym, który będzie grał w nowe poziomy"
     choose_your_level: "Wybierz poziom" # The rest of this section is the old play view at /play-old and isn't very important.
     adventurer_prefix: "Możesz wybrać jeden z poniższych poziomów lub omówić poziom na "
     adventurer_forum: "forum Podróżników"
     adventurer_suffix: "."
-#    campaign_old_beginner: "Old Beginner Campaign"
+    campaign_old_beginner: "Stara kampania dla początkujących"
     campaign_old_beginner_description: "... w której nauczysz się magii programowania"
     campaign_dev: "Losowe trudniejsze poziomy"
     campaign_dev_description: "... w których nauczysz się interfejsu robiąc coś trudniejszego."
-    campaign_multiplayer: "Pola walki dla wielu graczy"
-    campaign_multiplayer_description: "... w których konkurujesz z innymi graczami."
+    campaign_multiplayer: "Tryb wieloosobowy"
+    campaign_multiplayer_description: "Możesz tu konkurować z innymi graczami."
     campaign_player_created: "Stworzone przez graczy"
     campaign_player_created_description: "... w których walczysz przeciwko dziełom <a href=\"/contribute#artisan\">Czarodziejów Rzemieślników</a>"
     campaign_classic_algorithms: "Algorytmy klasyczne"
     campaign_classic_algorithms_description: "... gdzie nauczysz się najpopularniejszych alogrytmów w Informatyce."
-#    campaign_forest: "Forest Campaign"
-#    campaign_dungeon: "Dungeon Campaign"
+    campaign_forest: "Kampania leśna"
+    campaign_dungeon: "Kampania w lochach"
 
   login:
     sign_up: "Stwórz konto"
@@ -95,10 +95,10 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     logging_in: "Logowanie..."
     log_out: "Wyloguj się"
     recover: "odzyskaj konto"
-#    authenticate_gplus: "Authenticate G+"
-#    load_profile: "Load G+ Profile"
-#    load_email: "Load G+ Email"
-#    finishing: "Finishing"
+    authenticate_gplus: "Uwierzytelnij G+"
+    load_profile: "Wczytaj profil G+"
+    load_email: "Wczytaj e-mail G+"
+    finishing: "Kończenie"
 
   signup:
     create_account_title: "Stwórz konto, aby zapisać postępy"
@@ -117,27 +117,27 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     send_password: "Wyślij hasło tymczasowe"
 #    recovery_sent: "Recovery email sent."
 
-#  items:
-#    primary: "Primary"
-#    secondary: "Secondary"
-#    armor: "Armor"
-#    accessories: "Accessories"
-#    misc: "Misc"
-#    books: "Books"
+  items:
+    primary: "Podstawowe"
+    secondary: "Poboczne"
+    armor: "Pancerze"
+    accessories: "Akcesoria"
+    misc: "Inne"
+    books: "Książki"
 
   common:
     loading: "Ładowanie..."
     saving: "Zapisywanie..."
     sending: "Wysyłanie…"
-#    send: "Send"
+    send: "Wyślij"
     cancel: "Anuluj"
     save: "Zapisz"
 #    publish: "Publish"
-#    create: "Create"
+    create: "Stwórz"
     manual: "Ręcznie"
     fork: "Fork"
     play: "Graj" # When used as an action verb, like "Play next level"
-#    retry: "Retry"
+    retry: "Spróbuj ponownie"
 #    watch: "Watch"
 #    unwatch: "Unwatch"
 #    submit_patch: "Submit Patch"
@@ -171,43 +171,43 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     easy: "Łatwy"
     medium: "Średni"
     hard: "Trudny"
-#    player: "Player"
-#    player_level: "Level" # Like player level 5, not like level: Dungeons of Kithgard
+    player: "Gracz"
+    player_level: "Poziom" # Like player level 5, not like level: Dungeons of Kithgard
 
-#  units:
-#    second: "second"
-#    seconds: "seconds"
-#    minute: "minute"
-#    minutes: "minutes"
-#    hour: "hour"
-#    hours: "hours"
-#    day: "day"
-#    days: "days"
-#    week: "week"
-#    weeks: "weeks"
-#    month: "month"
-#    months: "months"
-#    year: "year"
-#    years: "years"
+  units:
+    second: "sekunda"
+    seconds: "sekundy","sekund" # X2, X3, X4 then it is "sekundy", otherwise it is "sekund" where X is tens digit, same goes for minutes, hours, weeks, months and years
+    minute: "minuta"
+    minutes: "minuty", "minut"
+    hour: "godzina"
+    hours: "godziny" , "godzin"
+    day: "dzień"
+    days: "dni"
+    week: "tydzień"
+    weeks: "tygodnie", "tygodni"
+    month: "miesiąc"
+    months: "miesiące", "miesięcy"
+    year: "rok"
+    years: "lata", "lat"
 
   play_level:
-    done: "Zrobione"
+    done: "Gotowe"
     home: "Strona główna" # Not used any more, will be removed soon.
-#    level: "Level" # Like "Level: Dungeons of Kithgard"
-#    skip: "Skip"
+    level: "Poziom"# Like "Level: Dungeons of Kithgard"
+    skip: "Pomiń"
     game_menu: "Menu gry"
     guide: "Przewodnik"
     restart: "Zacznij od nowa"
     goals: "Cele"
-#    goal: "Goal"
-#    running: "Running..."
+    goal: "Cel"
+    running: "Wykonywanie..."
     success: "Sukces!"
     incomplete: "Niekompletne"
     timed_out: "Czas minął"
     failing: "Niepowodzenie"
     action_timeline: "Oś czasu"
     click_to_select: "Kliknij jednostkę, by ją zaznaczyć."
-#    reload: "Reload"
+    reload: "Odśwież"
     reload_title: "Przywrócić cały kod?"
     reload_really: "Czy jesteś pewien, że chcesz przywrócić kod startowy tego poziomu?"
     reload_confirm: "Przywróć cały kod"
@@ -217,14 +217,14 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     victory_sign_up_poke: "Chcesz zapisać swój kod? Utwórz bezpłatne konto!"
     victory_rate_the_level: "Oceń poziom: " # Only in old-style levels.
     victory_return_to_ladder: "Powrót do drabinki"
-#    victory_play_continue: "Continue"
-#    victory_play_skip: "Skip Ahead"
+    victory_play_continue: "Kontynuuj"
+    victory_play_skip: "Pomiń"
     victory_play_next_level: "Przejdź na następny poziom"
-#    victory_play_more_practice: "More Practice"
-#    victory_play_too_easy: "Too Easy"
-#    victory_play_just_right: "Just Right"
-#    victory_play_too_hard: "Too Hard"
-#    victory_saving_progress: "Saving Progress"
+    victory_play_more_practice: "Ćwicz Więcej"
+    victory_play_too_easy: "Zbyt Łatwe"
+    victory_play_just_right: "W sam raz"
+    victory_play_too_hard: "Zbyt Trudne"
+    victory_saving_progress: "Zapisywanie postępu"
     victory_go_home: "Powrót do strony głównej" # Only in old-style levels.
     victory_review: "Powiedz nam coś więcej!" # Only in old-style levels.
     victory_hour_of_code_done: "Skończyłeś już?"
@@ -233,24 +233,24 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
     tome_minion_spells: "Czary twojego podopiecznego" # Only in old-style levels.
     tome_read_only_spells: "Czary tylko do odczytu" # Only in old-style levels.
     tome_other_units: "Inne jednostki" # Only in old-style levels.
-#    tome_cast_button_run: "Run"
-#    tome_cast_button_running: "Running"
+    tome_cast_button_run: "Wykonaj"
+    tome_cast_button_running: "Wykonywanie"
 #    tome_cast_button_ran: "Ran"
 #    tome_submit_button: "Submit"
 #    tome_reload_method: "Reload original code for this method" # Title text for individual method reload button.
-#    tome_select_method: "Select a Method"
+    tome_select_method: "Wybierz metodę" 
 #    tome_see_all_methods: "See all methods you can edit" # Title text for method list selector (shown when there are multiple programmable methdos).
     tome_select_a_thang: "Wybierz kogoś do "
     tome_available_spells: "Dostępne czary"
-#    tome_your_skills: "Your Skills"
-#    tome_current_method: "Current Method"
-#    hud_continue_short: "Continue"
-#    code_saved: "Code Saved"
+    tome_your_skills: "Twoje umiejętności"
+    tome_current_method: "Aktualna metoda"
+    hud_continue_short: "Kontynuuj"
+    code_saved: "Kod zapisany"
     skip_tutorial: "Pomiń (esc)"
     keyboard_shortcuts: "Skróty klawiszowe"
     loading_ready: "Gotowy!"
-#    loading_start: "Start Level"
-#    problem_alert_title: "Fix Your Code"
+    loading_start: "Rozpocznij poziom"
+    problem_alert_title: "Napraw swój kod"
     time_current: "Teraz:"
 #    time_total: "Max:"
     time_goto: "Idź do:"
@@ -832,8 +832,8 @@ module.exports = nativeDescription: "język polski", englishDescription: "Polish
 #    temp: "Temp"
 
   multiplayer:
-    multiplayer_title: "Ustawienia multiplayer" # We'll be changing this around significantly soon. Until then, it's not important to translate.
-    multiplayer_toggle: "Aktywuj multiplayer"
+    multiplayer_title: "Ustawienia wieloosobowe" # We'll be changing this around significantly soon. Until then, it's not important to translate.
+    multiplayer_toggle: "Aktywuj tryb wieloosobowy"
     multiplayer_toggle_description: "Pozwól innym dołączyć do twojej gry."
     multiplayer_link_description: "Przekaż ten link, jeśli chcesz, by ktoś do ciebie dołączył."
     multiplayer_hint_label: "Podpowiedź:"
